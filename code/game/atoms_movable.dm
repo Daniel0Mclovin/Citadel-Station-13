@@ -1,11 +1,4 @@
 
-#ifndef PIXEL_SCALE
-#define PIXEL_SCALE 0
-#if DM_VERSION >= 512
-#error HEY, PIXEL_SCALE probably exists now, remove this gross ass shim.
-#endif
-#endif
-
 /atom/movable
 	layer = OBJ_LAYER
 	var/last_move = null
@@ -215,7 +208,7 @@
 // This is automatically called when something enters your square
 //oldloc = old location on atom, inserted when forceMove is called and ONLY when forceMove is called!
 /atom/movable/Crossed(atom/movable/AM, oldloc)
-	return
+	SendSignal(COMSIG_MOVABLE_CROSSED, AM)
 
 
 //This is tg's equivalent to the byond bump, it used to be called bump with a second arg
@@ -577,8 +570,8 @@
 	if(ismob(loc))
 		var/mob/M = loc
 		M.transferItemToLoc(src, targetturf, TRUE)	//nodrops disks when?
-	else if(istype(loc, /obj/item/weapon/storage))
-		var/obj/item/weapon/storage/S = loc
+	else if(istype(loc, /obj/item/storage))
+		var/obj/item/storage/S = loc
 		S.remove_from_storage(src, targetturf)
 	else
 		forceMove(targetturf)
