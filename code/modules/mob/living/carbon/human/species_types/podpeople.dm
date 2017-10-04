@@ -38,11 +38,20 @@
 			H.nutrition = NUTRITION_LEVEL_FULL
 		if(light_amount > 0.2) //if there's enough light, heal
 <<<<<<< HEAD
+<<<<<<< HEAD
 			H.heal_overall_damage(0.6)
 			H.adjustOxyLoss(-0.5)
 
 	if(H.nutrition < NUTRITION_LEVEL_STARVING + 55)
 		H.adjustOxyLoss(5)//eat in order to stop
+=======
+			H.heal_overall_damage(0.05,0)
+			H.adjustOxyLoss(-0.5)
+
+	if(H.nutrition < NUTRITION_LEVEL_STARVING + 55)
+		H.adjustOxyLoss(5) //can eat to negate this unfortunately
+		H.adjustToxLoss(3)
+>>>>>>> 42cfb61f42d5c7ee08f2cf7b2fde54e9b7c46e54
 =======
 			H.heal_overall_damage(0.05,0)
 			H.adjustOxyLoss(-0.5)
